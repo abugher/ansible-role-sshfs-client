@@ -1,0 +1,15 @@
+---
+install_packages:
+  - 'sshfs'
+create_files:
+  - owner:              'display'
+    group:              'display'
+    mode:               '0755'
+    path:               '/storage'
+    state:              'directory'
+lines_in_files:
+  - line:               'readonly@files:/storage               /storage        fuse.sshfs      auto,_netdev,reconnect,delay_connect,defaults,noatime,nodev,nosuid,noexec,user,idmap=user,allow_other,uid=1001,gid=1001 0 2
+  '
+    regexp:             ''
+    dest:               '/etc/fstab'
+shell:                  mount /storage
