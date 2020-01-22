@@ -12,8 +12,8 @@ lines_in_files:
     regexp:             '^readonly@files:/storage'
     dest:               '/etc/fstab'
 shell_commands:
-  - command:            'mount /storage'
+  - command:            'mount /storage && touch /storage/touch_me.txt'
     user:               'root'
     chdir:              '/'
     # change_when:      false
-    creates:            '/dev/null'
+    creates:            '/storage/touch_me.txt'
