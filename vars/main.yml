@@ -1,19 +1,20 @@
 ---
 install_packages:
   - 'sshfs'
+known_hosts:            "{{ groups['file_server'] }}"
 create_files:
-  - owner:              'display'
-    group:              'display'
+  - owner:              'root'
+    group:              'root'
     mode:               '0755'
     path:               '/storage'
     state:              'directory'
 lines_in_files:
-  - line:               'readonly@files:/storage               /storage        fuse.sshfs      auto,_netdev,reconnect,delay_connect,defaults,noatime,nodev,nosuid,noexec,user,idmap=user,allow_other,uid=1001,gid=1001 0 2'
+  - line:               'readonly@files:/storage               /storage        fuse.sshfs      auto,_netdev,reconnect,delay_connect,defaults,noatime,nodev,nosuid,noexec,user,idmap=user,allow_other,uid=0,gid=0 0 2'
     regexp:             '^readonly@files:/storage'
     dest:               '/etc/fstab'
 shell_commands:
-  - command:            'mount /storage && touch /storage/touch_me.txt'
+  - command:            'mount /storage && mountpoint /storage'
     user:               'root'
     chdir:              '/'
-    # change_when:      false
-    creates:            '/storage/touch_me.txt'
+    changed_when:       false
+    creates:            '/creates/nothing/always/run'

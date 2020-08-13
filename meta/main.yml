@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - role:       'display'
+  - role:       'root_keys'
     when:       skipdeps is not defined
