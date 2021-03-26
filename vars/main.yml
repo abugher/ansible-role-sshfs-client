@@ -13,7 +13,7 @@ lines_in_files:
     regexp:             '^readonly@files:/storage'
     dest:               '/etc/fstab'
 shell_commands:
-  - command:            'mount /storage && mountpoint /storage'
+  - command:            'modprobe fuse && mount /storage && mountpoint /storage'
     user:               'root'
     chdir:              '/'
     changed_when:       false
