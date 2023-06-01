@@ -1,6 +1,6 @@
 ---
 dependencies:
-  - 'root_keys'
+  - 'root-keys'
 install_packages:
   - 'sshfs'
 known_hosts:            "{{ groups['file_server'] }}"
