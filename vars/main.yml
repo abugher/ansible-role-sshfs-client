@@ -3,7 +3,7 @@ dependencies:
   - 'root-keys'
 install_packages:
   - 'sshfs'
-known_hosts:            "{{ groups['file_server'] }}"
+known_hosts:            "{{ groups['file-server'] }}"
 create_files:
   - owner:              'root'
     group:              'root'
