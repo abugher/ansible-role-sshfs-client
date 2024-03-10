@@ -1,0 +1,8 @@
+---
+dependencies:
+  - role:     'root-keys'
+    tags:     
+      - 'dependency'
+  - role:     'ssh-client'
+    tags:     
+      - 'dependency'
